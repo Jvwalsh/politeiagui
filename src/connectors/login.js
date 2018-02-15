@@ -15,7 +15,7 @@ const loginConnector = connect(
     email: sel.email,
     isAdmin: sel.isAdmin,
     redirectedFrom: sel.redirectedFrom,
-    grantAccess: sel.grantAccess,
+    hasPaid: sel.hasPaid,
     isApiRequestingLogin: or(sel.isApiRequestingInit, sel.isApiRequestingLogin),
     apiLoginError: sel.apiLoginError
   }),
@@ -44,7 +44,7 @@ class Wrapper extends Component {
       if (this.props.isAdmin) {
         this.props.history.push("/admin/");
       } else {
-        this.props.grantAccess ?
+        this.props.hasPaid ?
           this.props.history.push("/user/proposals") : this.props.history.push("/");
       }
     });
